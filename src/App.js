@@ -46,7 +46,7 @@ function App() {
           <Rider></Rider>
           {/* SignUp */}
         </Route>
-        <Route path="/rented">
+        <Route path="/rented/:reg">
           <Rented></Rented>
           {/* SignUp */}
         </Route>

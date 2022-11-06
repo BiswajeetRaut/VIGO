@@ -1,8 +1,33 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import { NavLink } from 'react-router-dom'
+import db from '../firebase'
+import './Renter.css'
 const Renter = () => {
-
+  const history = useHistory();
+  function rent()
+  {
+    var reg= document.getElementsByClassName('reg')[0].value;
+    var ph =document.getElementsByClassName('room')[0].value;
+    var model =document.getElementsByClassName('model')[0].value;
+    var from =document.getElementsByClassName('from')[0].value;
+    var to =document.getElementsByClassName('to')[0].value;
+    var date =document.getElementsByClassName('date')[0].value;
+    var price =document.getElementsByClassName('price')[0].value;
+    db.collection('RenterDetails').add(
+      {
+        Reg:reg,
+        Ph:ph,
+        model:model,
+        from:from,
+        to:to,
+        date:date,
+        price:price,
+      }
+    );
+    alert('updated the data');
+    history.push(`/rented/${reg}`);
+  }
   return (
     <div>
       <div className="wrapper" style={{zIndex:10}}>
@@ -21,44 +46,37 @@ const Renter = () => {
             <input type="number" placeholder="Available Phone Number" className='room'/>
           </div>
           <div className="field">
+            <input type="text" placeholder="Cycle Model" className='model'/>
+          </div>
+          <div className="field">
           
           <label for="signup" className="signup">FROM</label>
-            <input type="time" className='room'/>
+            <input type="time" className='from'/>
           </div>
           <br />
           <div className="field">
           <label for="signup" className="signup">TO</label>
-            <input type="time" className='room'/>
+            <input type="time" className='to'/>
           </div>
           <br />
           <div className="field">
-            <input type="date" placeholder="Available Phone Number" className='room'/>
+            <input type="date" placeholder="Available Phone Number" className='date'/>
           </div>
           <div className="field">
-            <input type="number" placeholder="Price" className='room'/>
+            <input type="number" placeholder="Price" className='price'/>
           </div>
           <div className="field">
-          <NavLink
+          {/* <NavLink
               exact
               to="/rented"
               activeClassName="active"
               className="nav-links"
-            >
-            <input type="button" value="Rent Now" />
+            > */}
+            <input type="button" value="Rent Now" onClick={rent}/>
               
-            </NavLink>
+            {/* </NavLink> */}
           </div>
-          <div className="field">
-          <NavLink
-              exact
-              to="/main"
-              activeClassName="active"
-              className="nav-links"
-            >
-            <input type="button" value="Go Back" />
-              
-            </NavLink>
-          </div>
+          
         </form>
 
         <form action="#" className="signup">
@@ -79,6 +97,16 @@ const Renter = () => {
         </form>
       </div>
     </div>
+  </div>
+  <div className="back">
+          <NavLink
+              exact
+              to="/main"
+              activeClassName="active"
+    
+              className="nav-links">
+            <input type="button" value="Go Back" className='buton'/>
+            </NavLink>
   </div>
     </div>
   )
