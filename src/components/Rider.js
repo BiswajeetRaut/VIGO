@@ -25,10 +25,10 @@ const Rider = () => {
         }, [])
         console.log(vals);
   return (
-  <div className="page">
+  <div className="wholepage">
 
         <div className="search">
-        <form action="" id="form">
+        <form action="" id="form" className='forming'>
             <input type="search" id="myinput" placeholder="" onChange={myFunction}/>
             <i className="fa-solid fa-magnifying-glass"></i>
         </form>
@@ -39,6 +39,8 @@ const Rider = () => {
           <div className="neon__card carding">
             <h1 className="neon__title">{keys.model}</h1>
             <p className="neon__description">{keys.Reg}</p>
+            <p className="neon__description">DATE:{keys.date}</p>
+            <p className="neon__description">Price:{keys.price}/hour</p>
             <p className="neon__description">FROM: {keys.from} - {keys.to}</p>
             <a href={`https://wa.me/${keys.Ph}`} className="neon__button">
                 <svg className="neon__button-icon" viewBox="0 0 48 48">

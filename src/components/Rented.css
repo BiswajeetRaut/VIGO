@@ -125,9 +125,9 @@
 
 /* Basic Styling */
 body {
-background: #4B79A1;
-background: -webkit-linear-gradient(to left, #4B79A1 , #283E51);
-background: linear-gradient(to left, #4B79A1 , #283E51);        
+/* background: #4B79A1; */
+/* background: -webkit-linear-gradient(to left, #4B79A1 , #283E51); */
+/* background: linear-gradient(to left, #4B79A1 , #283E51);         */
 }
 h1 {
   text-align: center;

@@ -5,7 +5,7 @@
     /* font-smoothing: antialiased; */
   }
   
-  h1 {
+  .h1 {
     text-shadow: 0 0 11px rgba(0,0,0,0.5);
     line-height: .95;
     color: #66fcf1;
