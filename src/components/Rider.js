@@ -42,7 +42,7 @@ const Rider = () => {
             <p className="neon__description">DATE:{keys.date}</p>
             <p className="neon__description">Price:{keys.price}/hour</p>
             <p className="neon__description">FROM: {keys.from} - {keys.to}</p>
-            <a href={`https://wa.me/${keys.Ph}`} className="neon__button">
+            <a href={`https://wa.me/${keys.Ph}`} target="_blank" className="neon__button">
                 <svg className="neon__button-icon" viewBox="0 0 48 48">
                     <circle cx="19" cy="18" r="18" stroke="black" stroke-width="3" fill="blanchedalmond" />
                   </svg>

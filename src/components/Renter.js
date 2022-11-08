@@ -3,7 +3,11 @@ import { useHistory } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import db from '../firebase'
 import './Renter.css'
+import { useParams } from 'react-router-dom'
 const Renter = () => {
+  var {reg}=useParams();
+  var tomain="/main/"+reg.toString();
+  var to="/rented/"+reg.toString();
   const history = useHistory();
   function rent()
   {
@@ -14,19 +18,42 @@ const Renter = () => {
     var to =document.getElementsByClassName('to')[0].value;
     var date =document.getElementsByClassName('date')[0].value;
     var price =document.getElementsByClassName('price')[0].value;
-    db.collection('RenterDetails').add(
+    var regex1=/^[0-9]{2}[A-Z]{3}[0-9]{4}$/;
+    var regex2=/^[1-9]{1}[0-9]{9}$/;
+    if(reg==""||ph==""||model==""||from==""||to==""||date==""||price=="")
+    {
+      alert("All the fields must be filled");
+    }
+    else{
+      var flag=0;
+      if(!regex1.test(reg))
       {
-        Reg:reg,
-        Ph:ph,
-        model:model,
-        from:from,
-        to:to,
-        date:date,
-        price:price,
+         alert("invalid Registration Format");
+         flag=1;
       }
-    );
-    alert('updated the data');
-    history.push(`/rented/${reg}`);
+      if(!regex2.test(reg))
+      {
+         alert("invalid Mobile number format");
+         flag=1;
+      }
+      if(flag==0)
+      {
+        db.collection('RenterDetails').add(
+          {
+            Reg:reg,
+            Ph:ph,
+            model:model,
+            from:from,
+            to:to,
+            date:date,
+            price:price,
+          }
+        );
+        alert('updated the data');
+        history.push(`/rented/${reg}`);
+      }
+    }
+      
   }
   return (
     <div>
@@ -98,10 +125,20 @@ const Renter = () => {
       </div>
     </div>
   </div>
+  <div className="back1">
+          <NavLink
+              exact
+              to={to}
+              activeClassName="active"
+    
+              className="nav-links">
+            <input type="button" value="Renter dashboard" className='buton'/>
+            </NavLink>
+  </div>
   <div className="back">
           <NavLink
               exact
-              to="/main"
+              to={tomain}
               activeClassName="active"
     
               className="nav-links">

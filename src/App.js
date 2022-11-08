@@ -34,11 +34,11 @@ function App() {
           <Signup></Signup>
           {/* SignUp */}
         </Route>
-        <Route path="/main">
+        <Route path="/main/:reg">
           <Main></Main>
           {/* SignUp */}
         </Route>
-        <Route path="/renter">
+        <Route path="/renter/:reg">
           <Renter></Renter>
           {/* SignUp */}
         </Route>

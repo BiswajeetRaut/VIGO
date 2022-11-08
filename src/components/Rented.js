@@ -3,10 +3,13 @@ import './Rented.css'
 import db from '../firebase'
 import firebase from 'firebase'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
+import { useState } from 'react'
 const Rented = () => {
   var obj=[];
+  const [vals, setvals] = useState([]);
   const {reg} =useParams();
+  var torenter = "/renter/"+ reg.toString();
   useEffect(() => {
     function deletedoc()
     {
@@ -54,46 +57,40 @@ const Rented = () => {
             console.log(obj);
           }
         })
-      
-        obj.map((key)=>{
-            document.getElementsByClassName('rwd-table')[0].innerHTML+=`
-        <tr>
-        <td data-th="Renter ID">
-          ${key.id}
-        </td>
-        <td data-th="RegNo">
-          ${key.reg}
-        </td>
-        <td data-th="Model">
-          ${key.model}
-        </td>
-        <td data-th="Phone Number">
-          ${key.Ph}
-        </td>
-        <td data-th="Date">
-          ${key.date}
-        </td>
-        <td data-th="From">
-          ${key.from}
-        </td>
-        <td data-th="To">
-          ${key.to}
-        </td>
-        <td data-th="Price">
-          ${key.price}
-        </td>
-        <td data-th="Delete" >
-          <button className="btn-del" id=${key.id}>Delete</button>
-        </td>
-      </tr>
-            `
-            console.log(document.getElementById(key.id).innerHTML);
-            document.getElementById(key.id).addEventListener('click',function(){
-            db.collection('RenterDetails').doc(key.id).delete();
-            // console.log(key.id);
-          })
-        })
-        console.log(obj);
+        setvals(obj);
+      //   obj.map((key)=>{
+      //       document.getElementsByClassName('rwd-table')[0].innerHTML+=`
+      //   <tr>
+      //   <td data-th="Renter ID">
+      //     ${key.id}
+      //   </td>
+      //   <td data-th="RegNo">
+      //     ${key.reg}
+      //   </td>
+      //   <td data-th="Model">
+      //     ${key.model}
+      //   </td>
+      //   <td data-th="Phone Number">
+      //     ${key.Ph}
+      //   </td>
+      //   <td data-th="Date">
+      //     ${key.date}
+      //   </td>
+      //   <td data-th="From">
+      //     ${key.from}
+      //   </td>
+      //   <td data-th="To">
+      //     ${key.to}
+      //   </td>
+      //   <td data-th="Price">
+      //     ${key.price}
+      //   </td>
+      //   <td data-th="Delete" >
+      //     <button className="btn-del" id=${key.id}>Delete</button>
+      //   </td>
+      // </tr>
+      //       `
+        // })
     })
   }, []);
   return (
@@ -101,7 +98,7 @@ const Rented = () => {
     {/* <div className="heading-text">
     CYCLE DASHBOARD
     </div> */}
-    <div class="container">
+    <div class="container" >
     <h1 style={{marginBottom:50,}}>CYCLE DASHBOARD</h1>
   <table class="rwd-table">
     <tbody>
@@ -117,7 +114,7 @@ const Rented = () => {
         <th>Delete</th>
       </tr>
       {
-        obj.map((key)=>{
+        vals.map((key)=>{
           console.log(key);
           return(
           <tr>
@@ -146,7 +143,12 @@ const Rented = () => {
            {key.price}
          </td>
          <td data-th="Delete" >
-           <button className="btn-del" id={key.id}>Delete</button>
+           <button className="btn-del" id={key.id} onClick={()=>{
+            console.log(key);
+            var x=key.id;
+            console.log(x);
+            db.collection('RenterDetails').doc(`${x}`).delete();
+           }}>Delete</button>
          </td>
         </tr>
           )
@@ -155,6 +157,16 @@ const Rented = () => {
     </tbody>
   </table>
 </div>
+<div className="back">
+          <NavLink
+              exact
+              to={torenter}
+              activeClassName="active"
+    
+              className="nav-links">
+            <input type="button" value="Go Back" className='buton'/>
+            </NavLink>
+  </div>
     </div>
   )
 }

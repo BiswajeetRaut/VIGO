@@ -11,3 +11,8 @@
     height: 5vh;
     border-radius: 5px;
 }
+.back1{
+    position: absolute;
+    bottom:10px;
+    left:20px;
+}

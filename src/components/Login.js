@@ -36,8 +36,8 @@ const Login = () => {
         snapshot.docs.map(doc=>{
             if(reg==doc.data().Reg && pass==doc.data().Password)
            {
-                  history.push('/main');
-                  alert('Logged In Ridericting you to main page');
+                  history.push(`/main/${reg}`);
+                  alert('Logged In Re-diricting you to main page');
                   // console.log(doc.data().Reg)   
                   count=0; 
             }

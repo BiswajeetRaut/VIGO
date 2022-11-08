@@ -28,6 +28,8 @@
   min-width: 300px;
   max-width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 0 11px rgba(0,0,0,0.5);
+
 }
 
 .rwd-table tr:first-child {

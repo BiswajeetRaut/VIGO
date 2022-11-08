@@ -2,13 +2,14 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import "./HomeMain.css";
 
-function HomeMain() {
+function HomeMain({reg}) {
+  var to= "/renter/"+reg.toString();
   return (
     <div className="homemain">
       <div className="wrap1">
         <NavLink
               exact
-              to="/rider"
+              to='/rider'
               activeClassName="active"
               className="rent"
             >
@@ -22,7 +23,7 @@ function HomeMain() {
           
           <NavLink
               exact
-              to="/renter"
+              to={to}
               activeClassName="active"
               className="ride"
             >
