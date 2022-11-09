@@ -31,11 +31,11 @@ const Renter = () => {
          alert("invalid Registration Format");
          flag=1;
       }
-      if(!regex2.test(reg))
-      {
-         alert("invalid Mobile number format");
-         flag=1;
-      }
+      // if(!regex2.test(reg))
+      // {
+      //    alert("invalid Mobile number format");
+      //    flag=1;
+      // }
       if(flag==0)
       {
         db.collection('RenterDetails').add(
