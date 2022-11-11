@@ -1,6 +1,17 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+html {
+  /* this makes sure the padding and the border is included in the box sizing */
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 body{
   --chat-color:#3f0f40;
-  /* overflow:hidden; */
+  overflow-x :hidden;
+}
+::-webkit-scrollbar{
+    display: none; 
 }
 .app_body{
   display:flex;
