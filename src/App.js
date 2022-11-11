@@ -1,15 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
-import Chat from './components/Chat'
-import { useState } from 'react';
 import Login from './components/Login';
 import {useStateValue} from "./StateProvider"
 import Signup from './components/Signup';
-import { useHistory } from 'react-router-dom';
 import Home from './components/Home';
 import Main from './components/Main';
 import Renter from './components/Renter';

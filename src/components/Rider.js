@@ -1,7 +1,6 @@
 import { keys } from '@material-ui/core/styles/createBreakpoints'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import Block from '../components/Block'
 import db from '../firebase'
 import './Rider.css'
 const Rider = () => {
